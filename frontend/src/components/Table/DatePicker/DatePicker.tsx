@@ -6,7 +6,7 @@ import { selectAuth } from "../../../features/autchSlice";
 import { getCases } from "../../../features/casesSlice";
 
 interface IdProps {
-  idProp: number;
+  idProp: number | null;
   value: any;
   setValue: any;
 }
@@ -20,8 +20,11 @@ const DatePicker: React.FC<IdProps> = ({ idProp, value, setValue }) => {
       const fromDate = value[0].format("YYYY-MM-DD");
       const toDate = value[1].format("YYYY-MM-DD");
       if (token) {
-        const botId = idProp.toString();
-        dispatch(getCases({ token, botId, fromDate, toDate }));
+        if(typeof idProp === 'number' ){
+          const botId = idProp.toString();
+          dispatch(getCases({ token, botId, fromDate, toDate }));
+        }
+    
       }
     }
     return { fromDate: null, toDate: null };

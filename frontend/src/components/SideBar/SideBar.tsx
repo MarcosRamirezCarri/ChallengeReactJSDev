@@ -5,10 +5,8 @@ import dayjs from "dayjs";
 import { getCases } from "../../features/casesSlice";
 
 interface BotsProps {
-  arrayBot: [];
-  alias: string;
-  id: number;
-  token: string;
+  arrayBot: any[];
+  token: string | null;
   setValue: any;
 }
 
